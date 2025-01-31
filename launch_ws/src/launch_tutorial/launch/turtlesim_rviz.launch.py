@@ -7,17 +7,17 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-   config = os.path.join(
-      get_package_share_directory('launch_tutorial'),
-      'config',
-      'turtlesim.yaml'
+   rviz_config = os.path.join(
+      get_package_share_directory('turtle_tf2_py'),
+      'rviz',
+      'turtle_rviz.rviz'
       )
 
    return LaunchDescription([
       Node(
-         package='turtlesim',
-         executable='turtlesim_node',
-         name='sim',
-         parameters=[config]
+         package='rviz2',
+         executable='rviz2',
+         name='rviz2',
+         arguments=['-d', rviz_config]
       )
    ])
